@@ -39,7 +39,9 @@
   );
 }
 
-.plasmic_default_styles {
+.plasmic_default_styles,
+.plasmic_default_styles:where(.global_locale_en),
+.plasmic_default_styles:where(.global_locale_th) {
   --mixin-q8PvpNKi4RCo_font-family: "Montserrat", sans-serif;
   --mixin-q8PvpNKi4RCo_font-size: 16px;
   --mixin-q8PvpNKi4RCo_font-weight: 300;
@@ -160,7 +162,9 @@
   --mixin-igEBz9RBIhM3_white-space: pre-wrap;
 }
 
-.plasmic_mixins {
+.plasmic_mixins,
+.plasmic_mixins:where(.global_locale_en),
+.plasmic_mixins:where(.global_locale_th) {
   --mixin-iAFRMya-ia-B_white-space: pre-wrap;
   --plasmic-mixin-body_white-space: var(--mixin-iAFRMya-ia-B_white-space);
   --mixin-4NggP81PdLy3_white-space: pre-wrap;

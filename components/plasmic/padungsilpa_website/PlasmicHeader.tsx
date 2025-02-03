@@ -187,7 +187,13 @@ function PlasmicHeader__RenderFunc(props: {
       <Stack__
         as={"div"}
         hasGap={true}
-        className={classNames(projectcss.all, sty.freeBox__c9S3K)}
+        className={classNames(projectcss.all, sty.freeBox__c9S3K, {
+          [sty.freeBoxexpanded__c9S3Ktm00I]: hasVariant(
+            $state,
+            "expanded",
+            "expanded"
+          )
+        })}
       >
         <MenuButton
           data-plasmic-name={"menuButton"}
@@ -248,6 +254,9 @@ function PlasmicHeader__RenderFunc(props: {
             )}
             component={Link}
             href={`/about`}
+            onClick={async event => {
+              const $steps = {};
+            }}
             platform={"nextjs"}
           >
             <Trans__>{"About"}</Trans__>
@@ -261,6 +270,9 @@ function PlasmicHeader__RenderFunc(props: {
             )}
             component={Link}
             href={`/faq`}
+            onClick={async event => {
+              const $steps = {};
+            }}
             platform={"nextjs"}
           >
             <Trans__>{"Faq"}</Trans__>

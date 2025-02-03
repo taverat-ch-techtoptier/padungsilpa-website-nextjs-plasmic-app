@@ -1206,6 +1206,12 @@
         "name": "Screen",
         "projectId": "qoVKgVQ2sZgJYceYTt4HBN",
         "contextFilePath": "plasmic/padungsilpa_website/PlasmicGlobalVariant__Screen.tsx"
+      },
+      {
+        "id": "OOBj51XYroAn",
+        "name": "Locale",
+        "projectId": "qoVKgVQ2sZgJYceYTt4HBN",
+        "contextFilePath": "plasmic/padungsilpa_website/PlasmicGlobalVariant__Locale.tsx"
       }
     ]
   },

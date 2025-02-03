@@ -64,6 +64,7 @@ import { AntdMenuItem } from "@plasmicpkgs/antd5/skinny/registerMenu";
 import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
 import ProductRow from "../../ProductRow"; // plasmic-import: qZw1WdosKhVJ/component
 
+import { LocaleValue, useLocale } from "./PlasmicGlobalVariant__Locale"; // plasmic-import: OOBj51XYroAn/globalVariant
 import { useScreenVariants as useScreenVariantsnObOIahJqV6L } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: nObOIahJqV6L/globalVariant
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -103,7 +104,7 @@ export const Plasmicประวัติความเป็นมา__ArgProp
 
 export type Plasmicประวัติความเป็นมา__OverridesType = {
   root?: Flex__<"div">;
-  dropdown?: Flex__<typeof AntdDropdown>;
+  langaugeSwitcher?: Flex__<typeof AntdDropdown>;
   foreground2?: Flex__<"div">;
   header?: Flex__<"div">;
   bigPlants?: Flex__<"div">;
@@ -174,6 +175,7 @@ function Plasmicประวัติความเป็นมา__RenderFunc(
   });
 
   const globalVariants = ensureGlobalVariants({
+    locale: useLocale(),
     screen: useScreenVariantsnObOIahJqV6L()
   });
 
@@ -215,7 +217,19 @@ function Plasmicประวัติความเป็นมา__RenderFunc(
             plasmic_library_plasmic_color_type_css.plasmic_tokens,
             plasmic_antd_5_hostless_css.plasmic_tokens,
             sty.root,
-            { [sty.rooten]: hasVariant($state, "en", "en") }
+            {
+              [sty.rooten]: hasVariant($state, "en", "en"),
+              [sty.rootglobal_locale_en]: hasVariant(
+                globalVariants,
+                "locale",
+                "en"
+              ),
+              [sty.rootglobal_locale_th]: hasVariant(
+                globalVariants,
+                "locale",
+                "th"
+              )
+            }
           )}
         >
           <div className={classNames(projectcss.all, sty.freeBox__fHmWu)}>
@@ -340,10 +354,14 @@ function Plasmicประวัติความเป็นมา__RenderFunc(
                 </PlasmicLink__>
               </Stack__>
               <AntdDropdown
-                data-plasmic-name={"dropdown"}
-                data-plasmic-override={overrides.dropdown}
-                className={classNames("__wab_instance", sty.dropdown)}
-                dropdownMenuScopeClassName={sty["dropdown__dropdownMenu"]}
+                data-plasmic-name={"langaugeSwitcher"}
+                data-plasmic-override={overrides.langaugeSwitcher}
+                className={classNames("__wab_instance", sty.langaugeSwitcher, {
+                  [sty.langaugeSwitcheren]: hasVariant($state, "en", "en")
+                })}
+                dropdownMenuScopeClassName={
+                  sty["langaugeSwitcher__dropdownMenu"]
+                }
                 fakeOpen={true}
                 menuItems={() => (
                   <React.Fragment>
@@ -403,9 +421,13 @@ function Plasmicประวัติความเป็นมา__RenderFunc(
                   __composite["0"]["onClick"] = async info => {
                     const $steps = {};
 
-                    $steps["runCode"] = true
+                    $steps["updateEn"] = true
                       ? (() => {
-                          const actionArgs = { vgroup: "en", operation: 6 };
+                          const actionArgs = {
+                            vgroup: "en",
+                            operation: 6,
+                            value: "en"
+                          };
                           return (({ vgroup, value }) => {
                             if (typeof value === "string") {
                               value = [value];
@@ -417,11 +439,11 @@ function Plasmicประวัติความเป็นมา__RenderFunc(
                         })()
                       : undefined;
                     if (
-                      $steps["runCode"] != null &&
-                      typeof $steps["runCode"] === "object" &&
-                      typeof $steps["runCode"].then === "function"
+                      $steps["updateEn"] != null &&
+                      typeof $steps["updateEn"] === "object" &&
+                      typeof $steps["updateEn"].then === "function"
                     ) {
-                      $steps["runCode"] = await $steps["runCode"];
+                      $steps["updateEn"] = await $steps["updateEn"];
                     }
                   };
                   __composite["1"]["label"] = "English";
@@ -451,6 +473,9 @@ function Plasmicประวัติความเป็นมา__RenderFunc(
                   };
                   return __composite;
                 })()}
+                onAction={async key => {
+                  const $steps = {};
+                }}
               >
                 <AntdButton
                   className={classNames("__wab_instance", sty.button___9Ukb0)}
@@ -3513,7 +3538,7 @@ function Plasmicประวัติความเป็นมา__RenderFunc(
 const PlasmicDescendants = {
   root: [
     "root",
-    "dropdown",
+    "langaugeSwitcher",
     "foreground2",
     "header",
     "bigPlants",
@@ -3522,7 +3547,7 @@ const PlasmicDescendants = {
     "productRow",
     "weThink"
   ],
-  dropdown: ["dropdown"],
+  langaugeSwitcher: ["langaugeSwitcher"],
   foreground2: ["foreground2"],
   header: ["header"],
   bigPlants: ["bigPlants"],
@@ -3536,7 +3561,7 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  dropdown: typeof AntdDropdown;
+  langaugeSwitcher: typeof AntdDropdown;
   foreground2: "div";
   header: "div";
   bigPlants: "div";
@@ -3607,7 +3632,7 @@ export const Plasmicประวัติความเป็นมา = Object
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    dropdown: makeNodeComponent("dropdown"),
+    langaugeSwitcher: makeNodeComponent("langaugeSwitcher"),
     foreground2: makeNodeComponent("foreground2"),
     header: makeNodeComponent("header"),
     bigPlants: makeNodeComponent("bigPlants"),

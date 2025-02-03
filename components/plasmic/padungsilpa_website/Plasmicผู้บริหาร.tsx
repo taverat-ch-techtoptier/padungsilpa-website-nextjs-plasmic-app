@@ -59,8 +59,12 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import { AntdDropdown } from "@plasmicpkgs/antd5/skinny/registerDropdown";
+import { AntdMenuItem } from "@plasmicpkgs/antd5/skinny/registerMenu";
+import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
 import ProductRow from "../../ProductRow"; // plasmic-import: qZw1WdosKhVJ/component
 
+import { LocaleValue, useLocale } from "./PlasmicGlobalVariant__Locale"; // plasmic-import: OOBj51XYroAn/globalVariant
 import { useScreenVariants as useScreenVariantsnObOIahJqV6L } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: nObOIahJqV6L/globalVariant
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -95,6 +99,7 @@ export const Plasmicผู้บริหาร__ArgProps = new Array<ArgPropTyp
 
 export type Plasmicผู้บริหาร__OverridesType = {
   root?: Flex__<"div">;
+  langaugeSwitcher?: Flex__<typeof AntdDropdown>;
   foreground2?: Flex__<"div">;
   header?: Flex__<"div">;
   bigPlants?: Flex__<"div">;
@@ -147,6 +152,7 @@ function Plasmicผู้บริหาร__RenderFunc(props: {
   const $refs = refsRef.current;
 
   const globalVariants = ensureGlobalVariants({
+    locale: useLocale(),
     screen: useScreenVariantsnObOIahJqV6L()
   });
 
@@ -174,7 +180,19 @@ function Plasmicผู้บริหาร__RenderFunc(props: {
             projectcss.plasmic_tokens,
             plasmic_library_plasmic_color_type_css.plasmic_tokens,
             plasmic_antd_5_hostless_css.plasmic_tokens,
-            sty.root
+            sty.root,
+            {
+              [sty.rootglobal_locale_en]: hasVariant(
+                globalVariants,
+                "locale",
+                "en"
+              ),
+              [sty.rootglobal_locale_th]: hasVariant(
+                globalVariants,
+                "locale",
+                "th"
+              )
+            }
           )}
         >
           <div className={classNames(projectcss.all, sty.freeBox__eCgPt)}>
@@ -243,6 +261,7 @@ function Plasmicผู้บริหาร__RenderFunc(props: {
                     sty.link__hBi4K
                   )}
                   component={Link}
+                  href={`/ประวัติความเป็นมา`}
                   platform={"nextjs"}
                 >
                   <Trans__>{"About"}</Trans__>
@@ -298,6 +317,110 @@ function Plasmicผู้บริหาร__RenderFunc(props: {
                   </div>
                 </PlasmicLink__>
               </Stack__>
+              <AntdDropdown
+                data-plasmic-name={"langaugeSwitcher"}
+                data-plasmic-override={overrides.langaugeSwitcher}
+                className={classNames("__wab_instance", sty.langaugeSwitcher)}
+                dropdownMenuScopeClassName={
+                  sty["langaugeSwitcher__dropdownMenu"]
+                }
+                fakeOpen={true}
+                menuItems={() => (
+                  <React.Fragment>
+                    <AntdMenuItem
+                      className={classNames(
+                        "__wab_instance",
+                        sty.menuItem__yce8M
+                      )}
+                      key={"menu-item-1"}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__mCiMv
+                        )}
+                      >
+                        <Trans__>{"Menu item"}</Trans__>
+                      </div>
+                    </AntdMenuItem>
+                    <AntdMenuItem
+                      className={classNames(
+                        "__wab_instance",
+                        sty.menuItem__lpnJ9
+                      )}
+                      key={"menu-item-2"}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__nsnd2
+                        )}
+                      >
+                        <Trans__>{"Menu item"}</Trans__>
+                      </div>
+                    </AntdMenuItem>
+                  </React.Fragment>
+                )}
+                menuItemsJson={(() => {
+                  const __composite = [
+                    {
+                      type: "item",
+                      value: "action1",
+                      label: null,
+                      onClick: null
+                    },
+                    { type: null, label: null }
+                  ];
+                  __composite["0"]["label"] =
+                    "\u0e20\u0e32\u0e29\u0e32\u0e44\u0e17\u0e22";
+                  __composite["0"]["onClick"] = async info => {
+                    const $steps = {};
+
+                    $steps["updateVariant"] = true
+                      ? (() => {
+                          const actionArgs = {};
+                          return (({ vgroup, value }) => {
+                            if (typeof value === "string") {
+                              value = [value];
+                            }
+                            undefined;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateVariant"] != null &&
+                      typeof $steps["updateVariant"] === "object" &&
+                      typeof $steps["updateVariant"].then === "function"
+                    ) {
+                      $steps["updateVariant"] = await $steps["updateVariant"];
+                    }
+                  };
+                  __composite["1"]["type"] = "item";
+                  __composite["1"]["label"] = "English";
+                  return __composite;
+                })()}
+                trigger={"hover"}
+              >
+                <AntdButton
+                  className={classNames("__wab_instance", sty.button__thmz1)}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__kdx5U
+                    )}
+                  >
+                    <Trans__>
+                      {
+                        "\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e20\u0e32\u0e29\u0e32 (Language)"
+                      }
+                    </Trans__>
+                  </div>
+                </AntdButton>
+              </AntdDropdown>
             </Stack__>
             <div className={classNames(projectcss.all, sty.freeBox__sqhcP)}>
               <Stack__
@@ -317,13 +440,30 @@ function Plasmicผู้บริหาร__RenderFunc(props: {
                       projectcss.all,
                       projectcss.h1,
                       projectcss.__wab_text,
-                      sty.h1__gfJFc
+                      sty.h1__gfJFc,
+                      {
+                        [sty.h1global_locale_en__gfJFc6KrGw]: hasVariant(
+                          globalVariants,
+                          "locale",
+                          "en"
+                        )
+                      }
                     )}
                   >
-                    <Trans__>{"We are Planty"}</Trans__>
+                    <Trans__>
+                      {hasVariant(globalVariants, "locale", "en")
+                        ? "Management Team"
+                        : "\u0e1c\u0e39\u0e49\u0e1a\u0e23\u0e34\u0e2b\u0e32\u0e23"}
+                    </Trans__>
                   </h1>
                   <div
-                    className={classNames(projectcss.all, sty.freeBox___8CbvH)}
+                    className={classNames(projectcss.all, sty.freeBox___8CbvH, {
+                      [sty.freeBoxglobal_locale_en___8CbvH6KrGw]: hasVariant(
+                        globalVariants,
+                        "locale",
+                        "en"
+                      )
+                    })}
                   >
                     <div
                       className={classNames(
@@ -3338,6 +3478,7 @@ function Plasmicผู้บริหาร__RenderFunc(props: {
 const PlasmicDescendants = {
   root: [
     "root",
+    "langaugeSwitcher",
     "foreground2",
     "header",
     "bigPlants",
@@ -3346,6 +3487,7 @@ const PlasmicDescendants = {
     "productRow",
     "weThink"
   ],
+  langaugeSwitcher: ["langaugeSwitcher"],
   foreground2: ["foreground2"],
   header: ["header"],
   bigPlants: ["bigPlants"],
@@ -3359,6 +3501,7 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  langaugeSwitcher: typeof AntdDropdown;
   foreground2: "div";
   header: "div";
   bigPlants: "div";
@@ -3429,6 +3572,7 @@ export const Plasmicผู้บริหาร = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    langaugeSwitcher: makeNodeComponent("langaugeSwitcher"),
     foreground2: makeNodeComponent("foreground2"),
     header: makeNodeComponent("header"),
     bigPlants: makeNodeComponent("bigPlants"),
