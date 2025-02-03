@@ -66,7 +66,6 @@ import FeatureItem from "../../FeatureItem"; // plasmic-import: molQgoumCOqo/com
 import BlogPost from "../../BlogPost"; // plasmic-import: hCjwnJbIqQ4X/component
 import Footer from "../../Footer"; // plasmic-import: 7SaKjBtxTH88/component
 
-import { LocaleValue, useLocale } from "./PlasmicGlobalVariant__Locale"; // plasmic-import: uL3Rp7Yx5WEE/globalVariant
 import { useScreenVariants as useScreenVariantsnObOIahJqV6L } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: nObOIahJqV6L/globalVariant
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -144,7 +143,6 @@ function PlasmicAboutUs__RenderFunc(props: {
   const $refs = refsRef.current;
 
   const globalVariants = ensureGlobalVariants({
-    locale: useLocale(),
     screen: useScreenVariantsnObOIahJqV6L()
   });
 
@@ -172,14 +170,7 @@ function PlasmicAboutUs__RenderFunc(props: {
             projectcss.plasmic_tokens,
             plasmic_library_plasmic_color_type_css.plasmic_tokens,
             plasmic_antd_5_hostless_css.plasmic_tokens,
-            sty.root,
-            {
-              [sty.rootglobal_locale_en]: hasVariant(
-                globalVariants,
-                "locale",
-                "en"
-              )
-            }
+            sty.root
           )}
         >
           <div className={classNames(projectcss.all, sty.freeBox__wdLhK)}>

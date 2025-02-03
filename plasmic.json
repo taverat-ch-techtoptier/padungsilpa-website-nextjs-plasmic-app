@@ -7,7 +7,7 @@
   },
   "style": {
     "scheme": "css-modules",
-    "defaultStyleCssFilePath": "plasmic/plasmic__default_style.css"
+    "defaultStyleCssFilePath": "plasmic/plasmic__default_style.module.css"
   },
   "images": {
     "scheme": "public-files",
@@ -419,7 +419,8 @@
           "componentImportPath": "@plasmicpkgs/antd5/skinny/registerBreadcrumb"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "seaQhLVS4bbjiGvJJrRwyL",
@@ -434,7 +435,8 @@
       "globalContextsFilePath": "",
       "splitsProviderFilePath": "",
       "codeComponents": [],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "qoVKgVQ2sZgJYceYTt4HBN",
@@ -1204,12 +1206,6 @@
         "name": "Screen",
         "projectId": "qoVKgVQ2sZgJYceYTt4HBN",
         "contextFilePath": "plasmic/padungsilpa_website/PlasmicGlobalVariant__Screen.tsx"
-      },
-      {
-        "id": "uL3Rp7Yx5WEE",
-        "name": "Locale",
-        "projectId": "qoVKgVQ2sZgJYceYTt4HBN",
-        "contextFilePath": "plasmic/padungsilpa_website/PlasmicGlobalVariant__Locale.tsx"
       }
     ]
   },

@@ -64,7 +64,6 @@ import { AntdMenuItem } from "@plasmicpkgs/antd5/skinny/registerMenu";
 import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
 import ProductRow from "../../ProductRow"; // plasmic-import: qZw1WdosKhVJ/component
 
-import { LocaleValue, useLocale } from "./PlasmicGlobalVariant__Locale"; // plasmic-import: uL3Rp7Yx5WEE/globalVariant
 import { useScreenVariants as useScreenVariantsnObOIahJqV6L } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: nObOIahJqV6L/globalVariant
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -88,11 +87,15 @@ import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: BTQ5d-_d3
 
 createPlasmicElementProxy;
 
-export type Plasmicประวัติความเป็นมา__VariantMembers = {};
-export type Plasmicประวัติความเป็นมา__VariantsArgs = {};
+export type Plasmicประวัติความเป็นมา__VariantMembers = {
+  en: "en";
+};
+export type Plasmicประวัติความเป็นมา__VariantsArgs = {
+  en?: SingleBooleanChoiceArg<"en">;
+};
 type VariantPropType = keyof Plasmicประวัติความเป็นมา__VariantsArgs;
 export const Plasmicประวัติความเป็นมา__VariantProps =
-  new Array<VariantPropType>();
+  new Array<VariantPropType>("en");
 
 export type Plasmicประวัติความเป็นมา__ArgsType = {};
 type ArgPropType = keyof Plasmicประวัติความเป็นมา__ArgsType;
@@ -152,8 +155,25 @@ function Plasmicประวัติความเป็นมา__RenderFunc(
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
+    () => [
+      {
+        path: "en",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.en
+      }
+    ],
+    [$props, $ctx, $refs]
+  );
+  const $state = useDollarState(stateSpecs, {
+    $props,
+    $ctx,
+    $queries: {},
+    $refs
+  });
+
   const globalVariants = ensureGlobalVariants({
-    locale: useLocale(),
     screen: useScreenVariantsnObOIahJqV6L()
   });
 
@@ -195,18 +215,7 @@ function Plasmicประวัติความเป็นมา__RenderFunc(
             plasmic_library_plasmic_color_type_css.plasmic_tokens,
             plasmic_antd_5_hostless_css.plasmic_tokens,
             sty.root,
-            {
-              [sty.rootglobal_locale_en]: hasVariant(
-                globalVariants,
-                "locale",
-                "en"
-              ),
-              [sty.rootglobal_locale_th]: hasVariant(
-                globalVariants,
-                "locale",
-                "th"
-              )
-            }
+            { [sty.rooten]: hasVariant($state, "en", "en") }
           )}
         >
           <div className={classNames(projectcss.all, sty.freeBox__fHmWu)}>
@@ -246,13 +255,7 @@ function Plasmicประวัติความเป็นมา__RenderFunc(
                 platform={"nextjs"}
               >
                 <Logo4SvgIcon
-                  className={classNames(projectcss.all, sty.svg__opMIb, {
-                    [sty.svgglobal_locale_th__opMIbr0HdR]: hasVariant(
-                      globalVariants,
-                      "locale",
-                      "th"
-                    )
-                  })}
+                  className={classNames(projectcss.all, sty.svg__opMIb)}
                   role={"img"}
                 />
               </PlasmicLink__>
@@ -341,6 +344,7 @@ function Plasmicประวัติความเป็นมา__RenderFunc(
                 data-plasmic-override={overrides.dropdown}
                 className={classNames("__wab_instance", sty.dropdown)}
                 dropdownMenuScopeClassName={sty["dropdown__dropdownMenu"]}
+                fakeOpen={true}
                 menuItems={() => (
                   <React.Fragment>
                     <AntdMenuItem
@@ -399,46 +403,50 @@ function Plasmicประวัติความเป็นมา__RenderFunc(
                   __composite["0"]["onClick"] = async info => {
                     const $steps = {};
 
-                    $steps["updateVariant"] = true
+                    $steps["runCode"] = true
                       ? (() => {
-                          const actionArgs = {};
+                          const actionArgs = { vgroup: "en", operation: 6 };
                           return (({ vgroup, value }) => {
                             if (typeof value === "string") {
                               value = [value];
                             }
-                            undefined;
+
+                            $stateSet($state, vgroup, false);
+                            return false;
                           })?.apply(null, [actionArgs]);
                         })()
                       : undefined;
                     if (
-                      $steps["updateVariant"] != null &&
-                      typeof $steps["updateVariant"] === "object" &&
-                      typeof $steps["updateVariant"].then === "function"
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
                     ) {
-                      $steps["updateVariant"] = await $steps["updateVariant"];
+                      $steps["runCode"] = await $steps["runCode"];
                     }
                   };
                   __composite["1"]["label"] = "English";
                   __composite["1"]["onClick"] = async info => {
                     const $steps = {};
 
-                    $steps["updateVariant"] = true
+                    $steps["updateEn"] = true
                       ? (() => {
-                          const actionArgs = {};
+                          const actionArgs = { vgroup: "en", operation: 4 };
                           return (({ vgroup, value }) => {
                             if (typeof value === "string") {
                               value = [value];
                             }
-                            undefined;
+
+                            $stateSet($state, vgroup, true);
+                            return true;
                           })?.apply(null, [actionArgs]);
                         })()
                       : undefined;
                     if (
-                      $steps["updateVariant"] != null &&
-                      typeof $steps["updateVariant"] === "object" &&
-                      typeof $steps["updateVariant"].then === "function"
+                      $steps["updateEn"] != null &&
+                      typeof $steps["updateEn"] === "object" &&
+                      typeof $steps["updateEn"].then === "function"
                     ) {
-                      $steps["updateVariant"] = await $steps["updateVariant"];
+                      $steps["updateEn"] = await $steps["updateEn"];
                     }
                   };
                   return __composite;
@@ -463,15 +471,7 @@ function Plasmicประวัติความเป็นมา__RenderFunc(
                 </AntdButton>
               </AntdDropdown>
             </Stack__>
-            <div
-              className={classNames(projectcss.all, sty.freeBox__ygQ0T, {
-                [sty.freeBoxglobal_locale_th__ygQ0Tr0HdR]: hasVariant(
-                  globalVariants,
-                  "locale",
-                  "th"
-                )
-              })}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__ygQ0T)}>
               <Stack__
                 as={"div"}
                 data-plasmic-name={"foreground2"}
@@ -491,18 +491,14 @@ function Plasmicประวัติความเป็นมา__RenderFunc(
                       projectcss.__wab_text,
                       sty.h1___52Ok0,
                       {
-                        [sty.h1global_locale_th___52Ok0R0HdR]: hasVariant(
-                          globalVariants,
-                          "locale",
-                          "th"
-                        )
+                        [sty.h1en___52Ok0XtVt7]: hasVariant($state, "en", "en")
                       }
                     )}
                   >
                     <Trans__>
-                      {hasVariant(globalVariants, "locale", "th")
-                        ? "\u0e1b\u0e23\u0e30\u0e27\u0e31\u0e15\u0e34\u0e04\u0e27\u0e32\u0e21\u0e40\u0e1b\u0e47\u0e19\u0e21\u0e32"
-                        : "We are Planty"}
+                      {hasVariant($state, "en", "en")
+                        ? "Our History"
+                        : "\u0e1b\u0e23\u0e30\u0e27\u0e31\u0e15\u0e34\u0e04\u0e27\u0e32\u0e21\u0e40\u0e1b\u0e47\u0e19\u0e21\u0e32"}
                     </Trans__>
                   </h1>
                   <div
