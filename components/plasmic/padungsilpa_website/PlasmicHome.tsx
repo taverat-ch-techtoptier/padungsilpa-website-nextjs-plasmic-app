@@ -210,9 +210,7 @@ function PlasmicHome__RenderFunc(props: {
                       sty.h1
                     )}
                   >
-                    <Trans__>
-                      {"Real, beautiful plants \nright to your door"}
-                    </Trans__>
+                    <Trans__>{"\u0e40\u0e27\u0e47\u0e1a E-Commerce"}</Trans__>
                   </h1>
                   <Button
                     data-plasmic-name={"button"}

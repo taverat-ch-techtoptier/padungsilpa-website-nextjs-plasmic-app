@@ -78,17 +78,17 @@ type VariantPropType = keyof PlasmicBlogPost__VariantsArgs;
 export const PlasmicBlogPost__VariantProps = new Array<VariantPropType>("long");
 
 export type PlasmicBlogPost__ArgsType = {
-  title?: React.ReactNode;
-  description?: React.ReactNode;
   image?: React.ReactNode;
+  title?: React.ReactNode;
   author?: React.ReactNode;
+  description?: React.ReactNode;
 };
 type ArgPropType = keyof PlasmicBlogPost__ArgsType;
 export const PlasmicBlogPost__ArgProps = new Array<ArgPropType>(
-  "title",
-  "description",
   "image",
-  "author"
+  "title",
+  "author",
+  "description"
 );
 
 export type PlasmicBlogPost__OverridesType = {
@@ -96,10 +96,10 @@ export type PlasmicBlogPost__OverridesType = {
 };
 
 export interface DefaultBlogPostProps {
-  title?: React.ReactNode;
-  description?: React.ReactNode;
   image?: React.ReactNode;
+  title?: React.ReactNode;
   author?: React.ReactNode;
+  description?: React.ReactNode;
   long?: SingleBooleanChoiceArg<"long">;
   className?: string;
 }
@@ -198,6 +198,9 @@ function PlasmicBlogPost__RenderFunc(props: {
               displayMinHeight={"0"}
               displayMinWidth={"0"}
               displayWidth={"100%"}
+              onClick={async event => {
+                const $steps = {};
+              }}
               src={{
                 src: "/plasmic/padungsilpa_website/images/b1.jpg",
                 fullWidth: 370,
